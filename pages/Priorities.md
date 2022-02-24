@@ -1,5 +1,20 @@
 # Waiting
 	- {{query (todo waiting))}}
+- # Notes Review
+	- #+BEGIN_QUERY
+	  {:title "Notes Reviews (Non-Scheduled)"
+	  :query [:find (pull ?b [*])
+	  :where
+	  [?b :block/ref-pages ?p]
+	  [?p :block/name "schedule"]
+	  [?b :block/marker ?m]
+	  [(contains? #{"TODO" "LATER" "DOING" "NOW"} ?m)]
+	  [(missing? $ ?b :block/scheduled)]
+	  [(missing? $ ?b :block/deadline)]
+	  ]
+	  :breadcrumb-show? true
+	  }
+	  #+END_QUERY
 - # A
 	- query-table:: false
 	  #+BEGIN_QUERY
