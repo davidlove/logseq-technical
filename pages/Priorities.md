@@ -6,7 +6,7 @@
 	  :query [:find (pull ?b [*])
 	  :where
 	  [?b :block/ref-pages ?p]
-	  [?p :block/name "schedule"]
+	  [?p :block/name "daily notes"]
 	  [?b :block/marker ?m]
 	  [(contains? #{"TODO" "LATER" "DOING" "NOW"} ?m)]
 	  [(missing? $ ?b :block/scheduled)]
